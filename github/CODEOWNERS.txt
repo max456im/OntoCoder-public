@@ -1,0 +1,8 @@
+```
+# Эти файлы требуют ревью от этико-юридического ядра
+laws/ @onto-foundry/ethics-core
+legal/ @onto-foundry/legal-team
+src/core/aenga/ @onto-foundry/ethics-core
+src/core/sgRL/ @onto-foundry/ethics-core
+THREE_LAWS_OF_ONTOGENESIS.md @onto-foundry/ethics-core
+```

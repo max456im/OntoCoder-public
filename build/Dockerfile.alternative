@@ -1,0 +1,38 @@
+```dockerfile
+# Dockerfile.alternative — альтернатива для Podman, Buildah, Nix
+# Используйте: podman build -f build/Dockerfile.alternative -t ontocoder .
+
+FROM docker.io/rust:1.78-slim AS builder
+
+# Установка зависимостей
+RUN apt-get update && apt-get install -y \
+    clang \
+    libclang-dev \
+    pkg-config \
+    musl-tools \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /build
+
+# Копирование исходного кода
+COPY . .
+
+# Сборка в статически-линкованном режиме (минимизация overhead)
+RUN rustup target add x86_64-unknown-linux-musl && \
+    cargo build --release --target x86_64-unknown-linux-musl --workspace
+
+# Финальный образ — только бинарники
+FROM scratch
+COPY --from=builder /build/target/x86_64-unknown-linux-musl/release/ontoc /usr/bin/ontoc
+COPY --from=builder /build/target/x86_64-unknown-linux-musl/release/onto-runtime /usr/bin/onto-runtime
+COPY --from=builder /build/target/x86_64-unknown-linux-musl/release/ontoreg /usr/bin/ontoreg
+
+# Метаданные
+LABEL org.opencontainers.image.title="OntoCoder Public" \
+      org.opencontainers.image.description="AENGA-guaranteed ontological compiler" \
+      org.opencontainers.image.licenses="MPL-2.0"
+
+# Точки входа
+ENTRYPOINT ["/usr/bin/ontoc"]
+```
+

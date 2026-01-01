@@ -1,0 +1,20 @@
+```txt
+AENGA BINDING CLAUSE (v2.1)
+
+By using, distributing, or deriving from OntoCoder Public, 
+the Licensee irrevocably agrees that:
+
+1. The AENGA ethical core, as defined in laws/AENGA_SPEC_v2.1.md, 
+   is an inseparable and non-bypassable component of any Covered Software.
+
+2. Removal, deactivation, stubbing, mocking (except in non-reasoned test mode), 
+   or circumvention of the AENGA core constitutes:
+   (a) a material breach of the MPL-2.0 license with Exhibit AENGA,
+   (b) forfeiture of the right to label the system as "reasoned" or "intelligent",
+   (c) potential legal liability under applicable AI governance frameworks.
+
+3. This clause is binding in all jurisdictions and may be enforced 
+   by the Onto Foundry Collective or any affected natural subject.
+
+This clause survives termination of the license and applies to all derivative works.
+```

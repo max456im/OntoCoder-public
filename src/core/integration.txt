@@ -1,0 +1,18 @@
+Интеграция в систему:
+
+- **`sgRL`** запускается в `main()` сразу после AENGA:
+  ```go
+  sgrlMonitor := sgrl.NewAENGAIntegrityMonitor(aengaAddr)
+  sgrlMonitor.Start()
+  ```
+
+- **`sgCL`** вызывается в `ontoc` перед генерацией байткода:
+  ```rust
+  sgCL::validator::SGCLValidator::compile_time_check(&form)?;
+  ```
+
+- **`cla`** используется в `onto-runtime` при загрузке профиля:
+  ```rust
+  let ctx = DataProcessingContext { ... };
+  cla::jurisdiction::is_processing_compliant(&ctx)?;
+  ```

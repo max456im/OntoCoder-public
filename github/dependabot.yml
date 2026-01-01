@@ -1,0 +1,13 @@
+```yaml
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 3
+    labels:
+      - "dependencies"
+      - "ci"
+# **Важно**: Dependabot для языковых зависимостей (Rust/Go/Python) может быть отключён, если вы используете **фиксированные версии** для обеспечения **онтологической стабильности** — это соответствует вашему принципу «недопущения деградации в пустой шаблон».
+```

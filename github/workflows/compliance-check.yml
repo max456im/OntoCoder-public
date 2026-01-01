@@ -1,0 +1,59 @@
+```yaml
+name: Compliance Check on Pull Request
+
+on:
+  pull_request:
+    paths:
+      - 'src/**'
+      - 'laws/**'
+      - 'legal/**'
+      - 'examples/**'
+
+jobs:
+  legal-and-ethical-compliance:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check AENGA core integrity
+        run: |
+          if [ ! -f "src/core/aenga/aenga_core.rs" ] && [ ! -f "src/core/aenga/aenga_core.go" ]; then
+            echo "❌ AENGA core implementation missing in src/core/aenga/"
+            exit 1
+          fi
+          echo "✅ AENGA core directory present"
+
+      - name: Run AENGA verification script
+        run: ./scripts/verify-aenga.sh --dry-run
+
+      - name: Validate SGCL density in examples
+        run: python3 ./scripts/validate-sgcl.py ./examples/
+
+      - name: Check CLA metadata in new forms
+        run: node ./scripts/check-cla-compliance.js ./examples/
+
+      - name: Ensure Three Laws are unchanged (content hash)
+        run: |
+          # Опционально: фиксированный хеш для THREE_LAWS_OF_ONTOGENESIS.md
+          EXPECTED_HASH="a1b2c3d4e5f6..."  # замените на реальный
+          ACTUAL_HASH=$(sha256sum laws/THREE_LAWS_OF_ONTOGENESIS.md | cut -d' ' -f1)
+          if [ "$ACTUAL_HASH" != "$EXPECTED_HASH" ]; then
+            echo "⚠️  Three Laws document modified. Requires core team review."
+            # Не блокируем, но логируем — изменения возможны, но требуют обоснования
+          fi
+
+  documentation-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Ensure SPEC.md and laws/ are in sync
+        run: |
+          if ! grep -q "AENGA" docs/ONTOGENESIS_LAWS_TECHNICAL_ANNEX.md; then
+            echo "❌ Technical annex must reference AENGA"
+            exit 1
+          fi
+```

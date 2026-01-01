@@ -1,0 +1,71 @@
+```yaml
+name: Publish OntoCoder Public Release
+
+on:
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+*'
+
+jobs:
+  build-and-verify:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [linux, macos, windows]
+        arch: [x64, arm64]
+        exclude:
+          - os: windows
+            arch: arm64
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up environment
+        run: |
+          echo "BUILD_OS=${{ matrix.os }}" >> $GITHUB_ENV
+          echo "BUILD_ARCH=${{ matrix.arch }}" >> $GITHUB_ENV
+
+      - name: Install build dependencies
+        run: |
+          # Пример для Rust-based сборки; адаптируйте под ваш стек
+          curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+          source $HOME/.cargo/env
+
+      - name: Build ontoc compiler
+        run: ./build/build.sh --target=${{ matrix.os }} --arch=${{ matrix.arch }}
+
+      - name: Verify AENGA core presence
+        run: ./scripts/verify-aenga.sh ./build/artifacts/ontoc*
+
+      - name: Validate SGCL compliance
+        run: python3 ./scripts/validate-sgcl.py ./examples/
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ontocoder-${{ matrix.os }}-${{ matrix.arch }}
+          path: ./build/artifacts/
+
+  publish-release:
+    needs: build-and-verify
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: ./artifacts
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ./artifacts/**/*
+          generate_release_notes: true
+
+      - name: Trigger Zenodo DOI (if configured)
+        run: echo "Zenodo webhook would be triggered here"
+        # Реально: настройка через Zenodo GitHub integration
+```
