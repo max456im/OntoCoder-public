@@ -1,0 +1,76 @@
+```yaml
+# .pre-commit-config.yaml
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: check-yaml
+        args: [--unsafe, --allow-multiple-docs]
+      - id: check-json
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+      - id: mixed-line-ending
+        args: [--fix, lf]
+      - id: detect-private-key
+
+  - repo: https://github.com/crate-ci/typos
+    rev: v1.22.0
+    hooks:
+      - id: typos
+        args: [--write-changes]  # Исправлять опечатки в документации
+
+  - repo: https://github.com/fsfe/reuse-tool
+    rev: v4.0.3
+    hooks:
+      - id: reuse
+        # Проверяет, что все файлы имеют корректные лицензионные заголовки
+        # Требует: pip install reuse
+
+  - repo: local
+    hooks:
+      - id: verify-aenga-core-presence
+        name: Ensure AENGA core is not removed
+        entry: ./scripts/verify-aenga.sh --pre-commit
+        language: script
+        always_run: true
+        pass_filenames: false
+
+      - id: validate-sgcl-density
+        name: Check ontological density in committed forms
+        entry: python3 ./scripts/validate-sgcl.py
+        language: system
+        files: ^examples/.*\.md$
+        always_run: true
+
+      - id: enforce-three-laws-immutability
+        name: Prevent accidental modification of Three Laws
+        entry: |
+          if git diff --cached --name-only | grep -q "laws/THREE_LAWS_OF_ONTOGENESIS.md"; then
+            echo "⚠️  THREE_LAWS_OF_ONTOGENESIS.md is being modified."
+            echo "    This requires explicit ethical review. Proceed only if intentional."
+            echo "    To bypass (not recommended): git commit --no-verify"
+            exit 1
+          fi
+        language: system
+        always_run: true
+        pass_filenames: false
+
+      - id: license-header-check
+        name: Ensure all source files have license header
+        entry: |
+          # Простая проверка наличия упоминания MPL/AENGA
+          for file in $(git diff --cached --name-only --diff-filter=AM | grep -E '\.(rs|go|py|js|sh|md)$'); do
+            if ! head -n5 "$file" | grep -q -E "(MPL|AENGA|Mozilla Public License|Три Закона)"; then
+              echo "❌ Missing license header in: $file"
+              exit 1
+            fi
+          done
+        language: system
+        always_run: true
+        pass_filenames: false
+
+# **Примечание**:  
+# - Для работы хука `reuse` требуется установка: `pip install reuse`.  
+# - Скрипты (`verify-aenga.sh`, `validate-sgcl.py`) должны быть исполняемыми и находиться в `/scripts/`.  
+# - Модификация `THREE_LAWS_OF_ONTOGENESIS.md` **блокируется на этапе коммита** — в соответствии с требованием, что Законы — не рекомендации, а **условие легитимности**.
+```

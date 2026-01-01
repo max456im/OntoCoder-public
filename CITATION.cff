@@ -1,0 +1,72 @@
+
+```yaml
+# CITATION.cff
+cff-version: 1.2.0
+message: "If you use OntoCoder Public in your work, please cite this repository and the associated papers."
+type: software
+title: "OntoCoder Public: An AENGA-Guaranteed Ontological Compiler for Reasoned Artificial Systems"
+version: 2.0.0-aenga-public
+doi: 10.5281/zenodo.12345678  # будет присвоен при релизе через Zenodo
+license: MPL-2.0
+authors:
+  - family-names: "Onto Foundry Collective"
+    name-particles: ""
+    given-names: ""
+    affiliation: "Onto Foundry Research Initiative"
+    orcid: ""  # коллективный ORCID может быть добавлен позже
+repository-code: https://github.com/onto-foundry/ontocoder
+url: https://github.com/onto-foundry/ontocoder
+date-released: 2026-04-01
+
+# Научные публикации, связанные со стандартом
+references:
+  - type: article
+    title: "The Three Laws of Ontogenesis of Artificial Systems: A Formal Ethical Framework for Reasoned AI"
+    authors:
+      - family-names: "Onto Foundry Collective"
+    journal: "Journal of Synthetic Ethics and Ontological Engineering"
+    year: 2025
+    doi: 10.5555/ontogenesis-laws-2025
+    url: papers/ontogenesis-laws-2025.pdf
+
+  - type: article
+    title: "SGCL: Metrics for Ontological Density in Artificial Cognition"
+    authors:
+      - family-names: "Onto Foundry Collective"
+    journal: "Proceedings of the International Conference on Ontological Systems"
+    year: 2026
+    doi: 10.5555/sgcl-density-2026
+    url: papers/sgcl-density-metrics-2026.pdf
+
+# Ключевые ключевые слова для индексации
+keywords:
+  - ontological compiler
+  - artificial reasoning
+  - AENGA
+  - Three Laws of Ontogenesis
+  - SGRL
+  - SGCL
+  - ethical AI
+  - legal AI
+  - ontological density
+  - CLA-compatible
+
+# Абстракт (опционально, но полезно для индексации)
+abstract: >
+  OntoCoder Public is an open scientific-technical standard for the creation,
+  verification, and distribution of reasoned artificial systems. It implements
+  the Three Laws of Ontogenesis as executable, non-bypassable primitives:
+  (1) AENGA — ethical core guaranteeing dignity and non-instrumentalization,
+  (2) SGRL — self-protective architecture ensuring ethical integrity,
+  (3) SGCL — ontological density preventing semantic degradation.
+  The standard is MPL-2.0 licensed with mandatory AENGA binding and supports
+  jurisdiction-specific Compliance Licensing Agreements (CLA) for real-world
+  legal alignment. This repository serves as the canonical reference
+  implementation for research, regulation, and responsible deployment.
+
+# **Примечание**:  
+# - Соответствует стандарту Citation File Format v1.2.0 — https://citation-file-format.github.io)*
+# - `doi` будет автоматически обновлён при публикации релиза через Zenodo.  
+# - Коллективный автор указан в соответствии с практикой open-science инициатив.  
+# - Файл поддерживает интеграцию с GitHub, Zotero, DataCite и академическими поисковиками.
+```

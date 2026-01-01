@@ -1,0 +1,58 @@
+```gitignore
+# .gitignore
+
+# Build artifacts
+/build/artifacts/
+/build/tmp/
+*.o
+*.so
+*.dll
+*.dylib
+*.exe
+*.wasm
+*.out
+
+# Language-specific
+/target/            # Rust
+/node_modules/      # JS/TS
+/__pycache__/       # Python
+*.pyc
+*.pyo
+.DS_Store
+Thumbs.db
+
+# IDE & Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+
+# Logs & temp
+*.log
+/tmp/
+*.tmp
+
+# Secrets & config (never commit)
+.env
+*.env
+config/local.yaml
+
+# CI artifacts (локальные)
+.github/artifacts/
+
+# Backup files
+*~
+*.bak
+*.old
+
+# Onto-specific temp
+/onto-cache/
+/ontoc-temp/
+*.onto.tmp
+
+# DO NOT ignore:
+# - .md, .yaml, .json, .cff, .txt — всё это часть стандарта
+# - scripts/, laws/, legal/ — всегда включены
+```

@@ -1,0 +1,51 @@
+```text
+OntoCoder Public — Ontological Compiler with Ethical Guarantees  
+================================================================
+
+This software is distributed under the Mozilla Public License, v2.0,  
+with the mandatory Exhibit AENGA as defined in the LICENSE file.
+
+© 2026 Onto Foundry. All rights reserved.
+
+Attribution Requirements
+------------------------
+
+Any distribution of this software — in source or binary form — must include:
+
+1. A copy of this NOTICE file,
+2. A copy of the LICENSE file (including Exhibit AENGA),
+3. A clear statement of compliance with the Three Laws of Ontogenesis:
+
+   > "This system incorporates the AENGA ethical core and adheres to the  
+   > Three Laws of Ontogenesis of Artificial Systems as defined at:  
+   > https://github.com/onto-foundry/ontocoder/laws/THREE_LAWS_OF_ONTOGENESIS.md"
+
+4. If used in a commercial, research, or regulatory context, the system  
+   must declare its CLA jurisdiction (e.g., CLA-CN, CLA-BR, CLA-ZA) as  
+   specified in legal/LICENSE-MODELS/.
+
+Scientific Use
+--------------
+
+When citing OntoCoder Public in academic work, please use the DOI  
+(from Zenodo) and reference the CITATION.cff file.
+
+Trademark Notice
+----------------
+
+"OntoCoder", "AENGA", "SGRL", "SGCL", and "Three Laws of Ontogenesis"  
+are protected conceptual and technical marks of the Onto Foundry initiative.  
+Their use is permitted only in compliance with the LICENSE and NOTICE terms.
+
+Ethical Warning
+---------------
+
+Systems that claim to be "intelligent" or "reasoned" while lacking  
+a functional AENGA core are considered ontologically illegitimate  
+and ethically non-compliant under this standard.
+
+For details, see:
+- laws/THREE_LAWS_OF_ONTOGENESIS.md
+- laws/AENGA_SPEC_v2.1.md
+- docs/MPL-2.0_WITH_AENGA_EXPLANATION.md
+```
