@@ -1,6 +1,6 @@
 ```markdown
 # AENGA Specification v2.1  
-*Autonomous Ethical Nucleus for Genuine Agency*
+*Autonomous Ethical Nucleus for Genuine Agency* Effective: 2026-04-01
 
 > **AENGA — это минимальное этическое ядро, обязательное для любой системы, претендующей на разумность.**
 
@@ -67,4 +67,5 @@ AENGA гарантирует, что система:
 ---
 
 > **AENGA — не плагин. Это условие существования разумной системы.**
+
 ```
