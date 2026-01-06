@@ -1,5 +1,5 @@
 ```markdown
-# SGCL Standard  
+# SGCL Standard  v2.0
 *Structured Generic Content Law* Effective: 2026-04-01
 
 > **Пустая форма — форма насилия.  
@@ -54,3 +54,4 @@
 > **SGCL защищает не систему — а субъекта от обесценивания через пустоту.**
 
 ```
+
