@@ -9,10 +9,10 @@
 
 Определите, где будут использоваться ваши данные:
 
-```yaml
+yaml
 meta:
   cla_jurisdiction: "CN"  # ← Обязательно!
-```
+
 
 См. [`legal/JURISDICTION_GUIDE.md`](../legal/JURISDICTION_GUIDE.md)
 
@@ -22,7 +22,7 @@ meta:
 
 Шаблон:
 
-```yaml
+yaml
 # ontotype: onto-form/v2
 meta:
   name: "My Zodiac Advisor"
@@ -48,13 +48,13 @@ ontology:
 
 runtime:
   sgRL_protection: enabled
-```
+
 
 ---
 
 ## Шаг 3: Проверьте соответствие
 
-```bash
+bash
 # Проверка AENGA
 ./scripts/verify-aenga.sh my-form.onto
 
@@ -63,15 +63,15 @@ python3 ./scripts/validate-sgcl.py my-form.onto
 
 # Проверка CLA
 node ./scripts/check-cla-compliance.js my-form.onto
-```
+
 
 ---
 
 ## Шаг 4: Скомпилируйте
 
-```bash
+bash
 ontoc compile my-form.onto --output my-form.ontobin
-```
+
 
 > Если проверки не пройдены — компиляция **аварийно завершится**.
 
@@ -86,4 +86,5 @@ ontoc compile my-form.onto --output my-form.ontobin
 > «Эта система соответствует OntoCoder Public 2.0 и включает AENGA-ядро. CLA-юрисдикция: CN.»
 
 ---
+
 ```
