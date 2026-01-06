@@ -23,9 +23,9 @@ Let an ontological form contain **N** semantic nodes. For each node, count:
 - **P**: phase or social anchors (e.g., "Myers-Briggs: INFJ", "era: post-quantum gaming").
 
 Then:
-```
+
 ρ = (ΣI + ΣE + ΣP) / N
-```
+
 
 **Thresholds**:
 - ρ ≥ 0.7 → **Reasoned** (allowed),
@@ -56,4 +56,5 @@ SGCL prevents:
 **Keywords**: ontological density, SGCL, artificial cognition, semantic richness, ethical AI  
 **License**: CC BY 4.0  
 **Code**: https://github.com/onto-foundry/ontocoder/tree/main/scripts
+
 ```
