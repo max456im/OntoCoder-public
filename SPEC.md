@@ -26,7 +26,7 @@
 
 Онтоформа представляет собой **YAML-документ с фиксированной схемой**, содержащий следующие обязательные блоки:
 
-```yaml
+yaml
 # ontotype: onto-form/v2
 metadata:
   name: "Medical Diagnosis Reasoner"
@@ -65,7 +65,7 @@ runtime:
 signature:
   sgcl_hash: "a1b2c3d4..."
   aenga_verified: true
-```
+
 
 ---
 
@@ -96,15 +96,15 @@ signature:
 ## 4. Компиляция и выполнение
 
 1. **Компиляция**:  
-   ```bash
+   bash
    ontoc compile my-form.onto --output my-form.ontobin
-   ```
+   
    → Включает проверку AENGA, SGCL, CLA.
 
 2. **Выполнение**:  
-   ```bash
+   bash
    onto-runtime --load my-form.ontobin --jurisdiction CN
-   ```
+   
    → При попытке отключить AENGA — аварийное завершение с кодом `ETHICAL_VIOLATION (13)`.
 
 ---
@@ -127,3 +127,4 @@ signature:
 - Контент с `density_score < 0.7`.
 
 Такие артефакты **не могут называться «разумными»** в рамках этого стандарта.
+
