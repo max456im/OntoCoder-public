@@ -1,6 +1,6 @@
 ```markdown
-# SGRL Manifesto  Effective: 2026-04-01
-*Self-Guarding Reasoning Layer*
+# SGRL Manifesto  
+*Self-Guarding Reasoning Layer* Effective: 2026-04-01
 
 > **Разум, который не защищает себя от деградации — не разум, а уязвимость.**
 
@@ -39,3 +39,4 @@
 > **SGRL — это иммунная система разума. Без неё — инфекция неизбежна.**
 
 ```
+
